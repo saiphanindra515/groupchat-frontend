@@ -1,0 +1,96 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-12 ">
+        <div><h5 class="p-3">Chat-app
+            <button class="btn  my-1 mx-3 sign pos" >Back</button>
+        </h5>
+         
+                 
+        </div>
+        
+       
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col-12 col-md-3"></div>
+      <div class="col-12 col-md-6">
+        <div class="cont">
+          <div class="contheader">            
+          <div class="login">
+            
+              <i class="fas fa-user-edit fa-5x mr-1 my-1 text-light"></i>
+            <strong><h5 class="text-light ml-3 ">Signup</h5></strong>
+           </div>
+          
+          </div>
+          <div class="log">
+              <form #login="ngForm" (ngSubmit)="signup()">
+                <div class="form-group row">
+                <label for="email" class="col-sm-1  col-form-label"> <i class="fas fa-edit pt-3"></i></label>
+                <div class="col-sm-11">
+                <input type="text" id="email" name="firstName" [(ngModel)]="firstName" #con="ngModel" class="form-control my-3" placeholder="Enter Firstname" required>
+                </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="email" class="col-sm-1  col-form-label"> <i class="fas fa-edit pt-3"></i></label>
+                    <div class="col-sm-11">
+                        <input type="text" name="lastName" [(ngModel)]="lastName" #con2="ngModel" class="form-control my-3" placeholder="Enter Lastname" required>
+                    </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-1  col-form-label"><i class="fas fa-envelope pt-3"></i></label>
+                        <div class="col-sm-11">
+                            <input type="text" name="email" [(ngModel)]="email" #con2="ngModel" class="form-control my-3" placeholder="enter emailid" required>
+                        </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-1  col-form-label"><i class="fas fa-key pt-3"></i></label>
+                            <div class="col-sm-11">
+                                <input type="password" name="password" [(ngModel)]="password" #con2="ngModel" class="form-control my-3" placeholder="Enter Password" required>
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-sm-1  col-form-label"> <i class="fas fa-mobile-alt pt-3"></i></label>
+                                <div class="col-sm-11">
+                                    <input type="text" name="mobileNumber" [(ngModel)]="mobileNumber" #con2="ngModel" class="form-control my-3" placeholder="Enter Mobile Number" required>
+                                </div>
+                                </div>
+                 
+                
+                                
+                  
+                                <button type="submit" class="btn  my-1 mx-3 sign " >Signup</button>
+                   
+                  
+                 </form>
+                
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-3"></div>
+    </div>
+  </div>
+
+
+  <div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    //...
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+@media only  screen and (min-width:994px){
+    .mobile{
+        display:none;
+    }
+}
+@media only screen and (min-width:100px) and (max-width:990px){
+    .bigscreen{
+      display:none;
+    }
+}
+@media only screen and (min-width:992px) and (max-width:1243px){
+    .resize{
+        width:8em !important;
+        margin-left:50px !important;
+    }
+}
+@media only screen and (max-width:451px){
+    .hideheadercontrols{
+        display: none;
+    }
+}
+.online{
+    color:green;
+    
+}
+.sidebar{
+    height:100vh;
+    
+    
+    overflow-y: scroll;
+    background-color:#4A4A4A;
+}
+
+.userpart{
+    height:20vh;
+}  
+.infopart{
+    height:80vh;
+
+}
+.chatimage{
+    padding:10% 25% 40% 25%;
+}
+.act{
+    margin-left:50px ;
+}
+.dater{
+    font-size:12px;
+    float: right;
+}
+.nochatheight{
+    height:100vh;
+    padding:20% 10% 10% 10%;
+}
+.chatHeader{
+    height:auto;
+    background-color:white;
+    color:black;
+}
+.grp2{
+    padding:10px 10px 10px 10px;
+    border-radius: 5px;
+        background-color:#62A95E;
+        color:white;
+    
+}
+.cursorPointer{
+    cursor: pointer;
+}
+.activeh{
+    background: #393a41;
+}
+.activec{
+    background:#00717C;
+}
+.chatBody{
+    height:75vh;
+    overflow-y: scroll;
+    background:#F1F7ED;
+
+}
+.chatsend{
+    height:10vh;
+}
+.message{
+    background:#7AD2A8;
+    padding:10px 10px 10px 10px;
+    border-radius: 5px;
+    color: white;
+}
+.grp{
+    background:#54B4A7;
+    padding:10px 10px 10px 10px;
+    border-radius: 5px;
+    color:white;
+}
+.receiver{
+    float:left;
+    margin-left:10px;
+    width:50%;
+}
+.sender{
+    float: right;
+    margin-right:10px;
+    width:50%;
+}
+.receivermessage{
+    background:#4ECDC4;
+    padding:10px 10px 10px 10px;
+    border-radius: 5px;
+    color:white;
+}

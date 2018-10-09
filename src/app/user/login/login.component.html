@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 ">
+      <div><h5 class="p-3">Chat-app
+          <button type="submit" class="btn  my-1 mx-3 sign pos" [routerLink]="['/signup']">Signup</button>
+      </h5>
+       
+               
+      </div>
+      
+     
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3"></div>
+    <div class="col-12 col-md-6">
+      <div class="cont">
+       <div class="contheader">            
+        <div class="login">
+          
+            <i class="fas fa-user-circle fa-5x mr-1 my-1 text-light"></i>
+          <strong><h5 class="text-light ml-3 ">Login</h5></strong>
+         </div>
+        
+        </div> 
+        <div class="log">
+            <form #logger="ngForm" (ngSubmit)="login()">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" name="email" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" name="password" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                
+                <button type="submit" class="btn sign my-1">Submit</button>
+                
+               
+              </form>
+              <a href="#" data-toggle="modal" data-target="#exampleModalCenter"> forgot password..?</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3"></div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalCenterTitle">Forgot Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form #forgot="ngForm">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="Forgotmail" [(ngModel)]="Forgotmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll send mail to your above mentioned email address</small>
+          </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="forgotPassword()">Send Mail</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  
+</div>

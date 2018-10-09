@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 ">
+      <div><h5 class="p-3">Chat-app
+          
+      </h5>
+       
+               
+      </div>
+      
+     
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3"></div>
+    <div class="col-12 col-md-6">
+      <div class="cont">
+      <!--  <div class="contheader">            
+        <div class="login">
+          
+            <i class="fas fa-user-friends fa-5x mr-1 my-1 text-light"></i>
+          <strong><h5 class="text-light  ml-3 "></h5></strong>
+         </div>
+        
+        </div>-->
+        <div class="log">
+            <form #logger="ngForm" >
+                <div class="text-center my-2" style="font-size: 25px;">Join group chat </div>
+                <div class="text-center my-2" style="font-size: 18px;">Are you intrested in joining group <strong> {{groupname}}</strong> created by one of your friend <strong>{{name}}</strong></div>
+               <!--  <div class="form-group">
+                
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" name="email" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" name="password" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div> -->
+                
+                <button type="submit" class="btn sign my-1" style="letter-spacing: 3px"(click)="join()">Join Group Chat <i class="far fa-smile"></i></button>
+                
+               
+              </form>
+              
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3"></div>
+  </div>
+</div>
+
+
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  
+</div>

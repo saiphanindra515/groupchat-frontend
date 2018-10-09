@@ -1,0 +1,44 @@
+
+.height{
+    height:100vh;
+    
+}
+.cont{
+    height: auto;
+    border:1px solid lightgray;
+    border-radius:5px;
+    margin-top: 5vh;
+    
+    
+    
+}
+.login{
+    padding: 2% 40% 2% 40%;
+}
+.cont:hover{
+    box-shadow: 5px 10px 8px #888888;
+}
+.contheader{
+    background:#28AF77;
+    height: auto;
+}
+.pos{
+    float:right;
+      
+
+}
+.sign{
+    background:#28AF77;
+    color:white; 
+      
+}
+.sign:hover{
+    box-shadow: 5px 10px 8px #888888;
+   
+}
+
+.log{
+    
+    height: auto;
+    padding:3% 10% 3% 10%;
+}

@@ -1,0 +1,295 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mobile">
+    <a class="navbar-brand" href="#">{{userName}} <i class="fas fa-circle fa-xs ml-1 online"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <p class="text-light"><a  data-toggle="modal" data-target="#deleteAccount"><i class="fas fa-trash cursorPointer px-4 py-2 text-light">
+                
+          </i></a>Delete Account</p> 
+      <p class="text-light"><a (click)="getAllUsers()" data-toggle="modal" data-target="#creategroup"><i class="fas fa-user-plus cursorPointer p-4 text-light">
+                
+      </i></a>Create group..</p>
+      <div class="onlinelist">
+        <p class="text-light text-center activeh">  Groups </p>
+      </div>
+      <div *ngFor="let group of allGroups" class="activeusers" [ngClass]="{'activec':group.groupId==active}">
+        <p  class="text-light ml-3  py-1 cursorPointer" (click)="groupSelectedToChat(group.groupId,group.groupName  )" > <i class="fas fa-users mr-2 fa-lg text-light"></i> {{group.groupName}} </p>
+       
+   </div> 
+   <div class="onlinelist">
+    <p class="text-light text-center activeh ">  online users </p>
+  </div>
+        <div *ngFor='let user of usersList' class="navbar-nav">
+        <a *ngIf="user.Id!==userId" class="nav-item nav-link active ml-4 cursorPointer" (click)="userSelectedToChat(user.Id,user.userName)"> <i class="fas fa-circle fa-xs online mr-1"></i> {{user.userName}} <span class="sr-only">(current)</span></a>
+    
+      </div>
+      <button class="btn btn-primary resize text-center my-3" (click)="logout()" style="width:100%; letter-spacing: 3px">Logout</button>
+    </div>
+  </nav>
+
+  <!--big screen-->
+
+  <div class="container-fluid ">
+      <div class="row">
+          <div class="col-3 sidebar bigscreen">
+              <div class="userpart">
+                    <i class="fas fa-user-alt pl-5 act pt-3 text-muted text-center fa-5x"></i>
+                    <p class="text-light"style="font-size:18px"><a><i class="fas fa-circle online cursorPointer px-4 py-2 mt-2">
+                
+                    </i></a>{{userName}}</p>   
+               <button class="btn btn-primary resize mb-2 ml-3" (click)="logout()" style="width:15em;">Logout</button>
+               <p class="text-light"><a  data-toggle="modal" data-target="#deleteAccount"><i class="fas fa-trash cursorPointer px-4 py-2 text-light">
+                
+              </i></a>Delete Account</p> 
+                <p class="text-light"><a (click)="getAllUsers()" data-toggle="modal" data-target="#creategroup"><i class="fas fa-user-plus cursorPointer px-4 py-2  text-light">
+                
+                    </i></a>Create group..</p>
+                    <div class="onlinelist">
+                      <p class="text-light text-center activeh py-2">  Groups </p>
+                    </div>
+                    <div *ngFor="let group of allGroups" class="activeusers" [ngClass]="{'activec':group.groupId==active}">
+                      <p  class="text-light ml-3  py-1 cursorPointer" (click)="groupSelectedToChat(group.groupId,group.groupName  )" > <i class="fas fa-users mr-2 fa-lg text-light"></i> {{group.groupName}} </p>
+                     
+                 </div> 
+   
+                    <div class="onlinelist">
+                            <p class="text-light text-center activeh py-2">  Online Users </p>
+                          </div>
+               <div *ngFor="let user of usersList" class="activeusers"[ngClass]="{'activec':user.Id==active}">
+                    <p *ngIf="user.Id!==userId" class="text-light ml-3  py-1 cursorPointer"  (click)="userSelectedToChat(user.Id,user.userName)" ><i class="fas fa-circle fa-xs online mr-2"></i> {{user.userName}} </p>
+               </div> 
+
+            </div>
+              
+          </div><!--end of big screen part-->
+     <!--no chat template-->
+
+   <div class="col-12 col-sm-12 col-md-9">
+       <div *ngIf="chatting" class="nochat bg-light">
+            
+          <div class="text-muted  nochatheight display-4">
+                <i class="fas fa-comment fas-5x text-muted "></i>
+             Welcome!! {{userName}} Have a nice chat!<i class="far fa-smile fas-7x m-2 text-muted"></i>
+          </div>
+
+       </div>
+       <div *ngIf="!chatting" class="chatbot">
+            <div class="chatcontainer">
+              <div class="chatHeader">
+                  <div><h5 class="px-3 pt-3"> <i *ngIf="groupchat" class="fas fa-users mr-2 fa-lg text-primary"></i><i *ngIf="!groupchat" class="fas fa-circle fa-xs online mr-2"></i>{{receiverName}}
+                    <i class="fas fa-comment fas-lg  text-muted hideheadercontrols" style="float:right;"></i>
+                    <p  class="ml-3 mr-1 hideheadercontrols" style='float: right ; font-size: 18px'>Chat-app </p>
+                      <p *ngIf="groupchat" style='float: right ; font-size: 16px'><i class="fas fa-eye fas-2x text-primary cursorPointer"data-toggle="modal" data-target="#exampleModal2" (click)="getGroupMembers()"></i></p>
+                      <p *ngIf="groupchat" style='float: right ; font-size: 16px'><i class="fas fa-sign-out-alt fas-2x text-primary mx-2 cursorPointer"></i></p>
+                      <p *ngIf="groupchat" class="text-muted ml-5" style="font-size: 13px">active group</p>
+                      <p *ngIf="!groupchat" class="text-muted ml-4" style="font-size: 13px">active now</p>
+                    </h5>
+                   
+                           
+                  </div>
+                  
+                  
+                 
+               <!-- <h5><i class="fas fa-circle fa-xs online mr-1"></i>{{receiverName}}</h5>
+                  <div *ngIf="groupchat"><button class="btn btn-danger" style="float: right">leavegroup</button></div>
+                
+                
+                <p class="ml-5 ">online</p>-->
+               
+              </div>
+              <div #scrollMe [scrollTop]="(scrollToChatTop)?0:scrollMe.scrollHeight"   class="chatBody">
+                    <div class="text-center my-2 "><h6 class='cursorPointer' (click)="morechat()">Load previous chat</h6></div>
+ 
+                        
+                        <div *ngFor="let item of grpmessageList">
+                          <div *ngIf="email==item.senderemail" class="sender mb-1">
+                             <div class="details mb-1 pt-2 pl-2 mt-2"> <h6>{{item.senderName}} </h6> </div>
+                             <div class="grp2 pl-2">{{item.message}}</div>
+                             <div class="mt-1 dater text-muted">{{item.createdOn | date:'medium'}}</div>
+                          </div>
+                          <div *ngIf="email!=item.senderemail" class="receiver mb-1">
+                              <div class="receiverdetails mb-1  mt-2 "> <h6>{{item.senderName}}</h6></div>
+                              <div class="grp">
+                                {{item.message}}
+                              </div>
+                              <div class="mt-1 dater text-muted"><p>{{item.createdOn | date:'medium'}}</p></div>
+                          </div>
+                        </div>
+                   
+                
+
+                <div *ngFor="let item of messageList">
+                <div *ngIf="userId==item.senderId" class="sender mb-1">
+                   <div class="details mb-1 pt-2 pl-2 mt-2"> <h6>{{item.senderName}} </h6> </div>
+                   <div class="message pl-2">{{item.message}}</div>
+                   <div class="mt-1 dater text-muted">{{item.createdOn | date:'medium'}}</div>
+                </div>
+                <div *ngIf="userId==item.receiverId" class="receiver mb-1">
+                    <div class="receiverdetails mb-1  mt-2 "> <h6>{{item.senderName}}</h6></div>
+                    <div class="receivermessage">
+                      {{item.message}}
+                    </div>
+                    <div class="mt-1 dater text-muted"><p>{{item.createdOn | date:'medium'}}</p></div>
+                </div>
+              </div>
+            
+              </div>
+              <div *ngIf="typing" class="typing text-center text-muted bg-light">
+                <h6> {{typerName}} is typing...</h6>
+            </div>
+            <div *ngIf="grptyping" class="typing text-center text-muted bg-light">
+              <h6> {{typerName}} is typing...</h6>
+          </div>
+              <div class="chatSend">
+                <div class="input-group mb-3">
+                  <input type="text" id="text1" [(ngModel)]="messageText" class="form-control" placeholder=""(keypress)="type()" aria-label="Recipient's username" aria-describedby="button-addon2" (keydown)="sendMessageUsingEnter($event)">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" (click)="sendMessage()" id="button-addon2">send</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+       </div>
+
+   </div>
+
+
+
+
+   <!--end of no chat template-->
+
+
+
+        </div>
+        <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="creategroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+        
+        <form>
+          <div class="form-group">
+            <label><h6>Add Title to your Group</h6></label>
+          <input type="text" name="groupName" [(ngModel)]="groupName" placeholder="Friends for ever" class=" mx-2 form-control">
+          </div>
+        </form>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y: scroll;font-family: Helvetica">
+        <div class=" text-center">
+         <h5>  people you may add</h5>
+        </div>
+        <div *ngFor="let s of allUsers" class="users m-4 p-2">
+          <div class="name" style="float: left; width: 100% ">{{s.firstName}}
+              
+          <i class="fas fa-user-plus mx-2 text-primary cursorPointer" (click)="addTogroup(s.userId,s.firstName,s.email)"style='float: right;'></i>
+          </div>
+        </div>
+        <div *ngFor="let a of addedToGroup" class="users m-4 p-2" style="border-top: 1px solid lightblue">
+            <div class="name" style="float: left; width: 100% ">{{a.fname}}
+                <i class="fas fa-user-times mx-2 text-danger cursorPointer" (click)="removeFromGroup(a.id)"style='float: right;'></i>
+            
+            </div>
+          </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="createGroupfun()">Create Group</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    
+  </div>
+
+  <!--modal 2 viewing members-->
+  <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{receiverName}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="editName">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fas fa-edit fas-lg ml-3 cursorPointer text-primary" (click)="editGroup()"></i></span>
+                        </div>
+                        <input type="text" name="newGroupName" [(ngModel)]="newGroupName" class="form-control" placeholder="edit group Name" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <div class="text-center my-2"><h5>Members</h5></div>
+                    <div *ngFor="let one of allmem" class="members">
+                     
+                      <div *ngIf="one.memberName"><i class="fas fa-user fas-lg text-info mr-2"></i> {{one.memberName}}</div>
+                      <div class="text-muted" style="font-size: 13px">{{one.email}}</div>
+                      <br>
+                    </div>
+                </div>
+              </div>
+              <div class="col-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                  
+                  <button type="button" class="btn btn-danger my-1" (click)="DeleteGroup()" style="width: 100%"><i class="fas fa-trash fas-sm mr-2 text-light"></i>Delete Group</button>
+                  <button type="button" class="btn btn-info my-1" (click)="LeaveGroup()" style="width: 100%"><i class="fas fa-sign-out-alt fas-sm mr-2 text-light"></i>leave group</button>
+              </div>
+              <div class="col-1"></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="deleteAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete your Account?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      Are you sure of Deleting Account?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteAccount()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
